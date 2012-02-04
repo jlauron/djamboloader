@@ -1,6 +1,6 @@
-## djamboloader
+# djamboloader
 
-djamboloader (for django combo loader) is a django application used to load
+*djamboloader* (for django combo loader) is a django application used to load
 and combine a list of javascript or css files from the filesystem for a
 specific library. 
 
@@ -13,12 +13,13 @@ djamboloader is inspired by the combo handler provided by Yahoo! for YUI3
 their own combo handler. It makes it easy to integrate the handler in your 
 existing django web application but can also be run as a standalone handler.
 
-# Installation
+## Installation
 
 To add djamboloader to your django webapp you have to make sure the path 
 to djamboloader is in your PYTHONPATH, add 'djamboloader' to your django
-INSTALLED_APPS and add the following to your django url patterns:
-url(r'^djamboloader/', include('djamboloader.urls'))
+INSTALLED\_APPS and add the following to your django url patterns:
+
+    url(r'^djamboloader/', include('djamboloader.urls'))
 
 Feel free to also add a new handler in your django logging configuration
 for 'djamboloader'.
@@ -26,12 +27,12 @@ for 'djamboloader'.
 For more information on how to setup django, refer to
 http://www.djangoproject.com
 
-# Configuration
+## Configuration
 
 To configure djamboloader, open djamboloader/settings.py and edit the LIBRARIES 
 definition.
 
-# Examples
+## Examples
 
 http://yourserver.com/djamboloader/yui3/combo?base/base.js&dom/dom.js&node/node.js...
 http://yourserver.com/djamboloader/yourlib/combo?pathto/libfile1.js&pathto/libfile2.js...
