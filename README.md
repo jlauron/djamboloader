@@ -1,8 +1,8 @@
 # djamboloader
 
-**djamboloader** (for django combo loader) is a django application used to load
-and combine a list of javascript or css files from the filesystem for a
-specific library. 
+**djamboloader** (for django combo loader) is a simple django application used
+to load and combine a list of javascript or css files from the filesystem for 
+a specific library. 
 
 It is very useful for projects containing a lot of javascript
 or css files where making one single HTTP request that combines all required 
@@ -17,7 +17,7 @@ existing django web application but can also be run as a standalone handler.
 
 To add **djamboloader** to your django webapp you have to make sure the path 
 to **djamboloader** is in your PYTHONPATH, add `'djamboloader'` to your django
-`INSTALLED\_APPS` and add the following to your django url patterns:
+`INSTALLED_APPS` and add the following to your django url patterns:
 
     url(r'^djamboloader/', include('djamboloader.urls'))
 
@@ -29,8 +29,8 @@ http://www.djangoproject.com
 
 ## Configuration
 
-To configure **djamboloader**, open djamboloader/settings.py and edit the LIBRARIES 
-definition, for example:
+To configure **djamboloader**, open djamboloader/settings.py and edit the 
+`LIBRARIES` definition, for example:
 
     LIBRARIES = {
       "yui3": {
