@@ -13,6 +13,8 @@ files at once can improve performance of a web application significantly.
 their own combo handler. It makes it easy to integrate the handler in your 
 existing django web application but can also be run as a standalone handler.
 
+**djamboloader** is available for use under the MIT software license. See LICENSE file for more details.
+
 ## Installation
 
 To add **djamboloader** to your django webapp you have to make sure the path 
