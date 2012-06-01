@@ -37,7 +37,7 @@ To configure **djamboloader**, open djamboloader/settings.py and edit the
     LIBRARIES = {
       "yui3": {
         "path": "/home/libs/yui3/build/",
-      }.
+      },
       "yui2in3": {
         "path": "/home/libs/yui2in3/dist/2.8.0/build/",
       },
