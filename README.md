@@ -46,9 +46,51 @@ To configure **djamboloader**, open djamboloader/settings.py and edit the
       },
     }
 
+## Configuration through Django's settings.py file
+
+Alternatively, you could configure djamboloader in Django's settings.py file by 
+using the JAVASCRIPT_LIBRARIES setting. 
+The syntax is the same as for LIBRARIES above.
+
+Djamboloader will try to import from Django's settings.py file first, then it falls
+back on djamboloader/settings.py.
+
+This option will make it easier to install djamboloader as a package in virtual environment 
+and to easily upgrade to later versions, without having to change anything inside the
+djamboloader package itself.
+
+## Caching
+
+Djamboloader supports caching of the JavaScript libraries by using Django's cache framework.
+
+The first step is to make sure you have set up the Django cache as described in the Django documentation.
+
+After that, you can use the *cache_for* setting to specify how many seconds would you like to cache each library.
+
+Example for a Django settings.py file:
+
+    TEN_DAYS = 10 * 24 * 60 * 60
+    THIRTY_DAYS = 30 * 24 * 60 * 60
+    JAVASCRIPT_LIBRARIES = {
+        "yui_3_5_1": {
+            "path": os.path.join(PROJECT_DIRECTORY, "static/javascript/lib/yui-3.5.1/build/"),
+            "cache_for": TEN_DAYS, 
+        },
+        "yui2in3_2_9_0": {
+            "path": os.path.join(PROJECT_DIRECTORY, "static/javascript/lib/yui-2in3/dist/2.9.0/build/"),
+            "cache_for": THIRTY_DAYS,
+        },
+    }
+
+In the example above YUI 3 will be cached for 10 days, yui2in3 will be cached for 30 days.
+The *cache_for* setting is optional, in case you don't use it the libraries won't be cached at all. 
+
+_Note_ In case you do cache for a long period, it is probably a good idea to include the version number
+of the JS library in the URL (as you see above) to make upgrading of libraries easier.
+
 ## Examples
 
 http://yourserver.com/djamboloader/yui3/combo?base/base.js&dom/dom.js&node/node.js...
 http://yourserver.com/djamboloader/yourlib/combo?pathto/libfile1.js&pathto/libfile2.js...
-will return a single response with all requested javascript files combined
 
+will return a single response with all requested javascript files combined
