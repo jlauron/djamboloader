@@ -1,11 +1,11 @@
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound
 from django.views.decorators.cache import cache_page
 from functools import wraps
 
 import logging
 
 from djamboloader       import settings
-from djamboloader.util  import LibraryLoader
+from djamboloader.util  import LibraryLoader, LibraryLoaderError
 
 logger = logging.getLogger("djamboloader")
 
@@ -75,6 +75,10 @@ def load(request, library=None):
   libconfig = settings.LIBRARIES[library]
 
   loader = LibraryLoader(libconfig["path"])
-  response = loader.combine(libs)
+  try:
+    response = loader.combine(libs)
 
-  return HttpResponse(response, mimetype=mimetype)
+    return HttpResponse(response, mimetype=mimetype)
+  except LibraryLoaderError, e:
+    return HttpResponseNotFound("Couldn't read from %s." % e.filename)
+
