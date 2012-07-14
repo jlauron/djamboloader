@@ -3,6 +3,13 @@ import logging
 
 logger = logging.getLogger("djamboloader")
 
+class LibraryLoaderError(Exception):
+    def __init__(self, filename):
+        self.filename = filename
+
+    def __str__(self):
+        return repr(self.filename)
+
 class LibraryLoader:
   """
   LibraryLoader is used to load and combine a list of libraries from the
@@ -32,5 +39,8 @@ class LibraryLoader:
         f.close()
       except IOError, e:
         logger.error(e)
+        raise LibraryLoaderError(path)
 
     return content
+
+

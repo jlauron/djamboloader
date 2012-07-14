@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='Djamboloader',
-    version='0.1.1',
+    version='0.1.2',
     description='A python/django based combo loader for javascript and css',
     long_description='djamboloader (for django combo loader) is a simple django application used to load and combine a list of javascript or css files from the filesystem for a specific library.',
     author='Julien Lauron',
